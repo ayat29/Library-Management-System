@@ -5,8 +5,8 @@
 <body>
   <nav>
   <ul>
-  <li><a href = "http://localhost/Library Management System/view_past_orders.php">Past Orders</a></li>
-  <li><a href = "http://localhost/Library Management System/view_wishlist.php">Wishlist</a></li>
+  <li><a href = "http://localhost/Library Management System/view_past_orders.php" target = "_blank">Past Orders</a></li>
+  <li><a href = "http://localhost/Library Management System/view_wishlist.php" target = "_blank">Wishlist</a></li>
   <!-- <li><a href = "contact.asp">Contact</a></li>
   <li><a href = "about.asp">About</a></li> -->
   <li style = 'float : right;'><a href = "http://localhost/Library Management System/logout.php">Logout</a>
@@ -65,7 +65,7 @@
       }
       echo "</td>
       <td><form action = 'wishlist_add.php' method = 'post' target = '_blank'><input type='hidden' name='isbn' value=$isbn>
-            <input type='hidden' name='title' value=$title> <button class = 'button' type = 'submit'>Request Book</button></form></td>
+            <input type='hidden' name='title' value='$title'> <button class = 'button' type = 'submit'>Request Book</button></form></td>
       </tr>";
     }
     echo "</table>";

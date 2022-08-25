@@ -73,6 +73,7 @@
 
   $present = array();
   $list = mysqli_fetch_all(mysqli_query($con, $query), MYSQLI_ASSOC);
+  array_keys($list);
   foreach ($list as $item)
   {
     if (!in_array($item["ISBN"], $present))
@@ -85,7 +86,7 @@
       echo "<td>$isbn</td>";
       echo "<td>$price</td>";
       echo "<td><form action = 'wishlist_add.php' method = 'post' target = '_blank'><input type='hidden' name='isbn' value=$isbn>
-            <input type='hidden' name='title' value=$title> <button class = 'button' type = 'submit'>Request Book</button></form></td>";
+            <input type='hidden' name='title' value='$title'> <button class = 'button' type = 'submit'>Request Book</button></form></td>";
       echo "</tr>";
       echo "<br>";
       array_push($present, $item["ISBN"]);

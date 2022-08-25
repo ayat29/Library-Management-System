@@ -21,11 +21,11 @@
   $pass = "";
   $db = "library";
   $con = new mysqli("localhost", $user, $pass, $db) or die("Unable to connect");
-  $title = mysqli_real_escape_string($con, $_POST['title']);
+  $title = $_POST['title'];
+  $title = mysqli_real_escape_string($con, $title);
   $query1 = "select * from book where isbn = '$isbn'";
   $result1 = mysqli_query($con, $query1);
   $num = mysqli_num_rows($result1);
-  printf($num);
   $query2 = "select max(Wishlist_ID) from wishlist_book group by Student_ID and Student_ID = $stu_id";
   $result2 = mysqli_query($con, $query2);
   $result2 = mysqli_fetch_all($result2, MYSQLI_ASSOC);

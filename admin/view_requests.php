@@ -33,14 +33,14 @@
     <td>Student ID</td>
     <td>ISBN</td>
     <td>Availability</td>
-    <td>In_stock</td>
+    <td>In Stock</td>
   </tr>";
   foreach ($rows as $row)
   {
     $id = $row['Student_ID'];
     $isbn = $row['ISBN'];
-    $availability = $row['Availability'];
-    $in_stock = $row['In_stock'];
+    $availability = ($row['Availability']) ? "Available" : "Not Available";
+    $in_stock = ($row['In_stock']) ? "Yes" : "No";
     $wishlist_id = $row['Wishlist_ID'];
     echo "<tr id = 'table_data'>";
     echo "<td>$id</td>";

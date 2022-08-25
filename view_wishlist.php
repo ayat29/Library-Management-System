@@ -28,14 +28,14 @@
     <td>Title</td>
     <td>ISBN</td>
     <td>Availability</td>
-    <td>In_stock</td>
+    <td>In stock</td>
   </tr>";
   foreach ($rows as $row)
   {
     $title = $row['Title'];
     $isbn = $row['ISBN'];
-    $availability = $row['Availability'];
-    $in_stock = $row['In_stock'];
+    $availability = ($row['Availability']) ? "Available" : "Not available";
+    $in_stock = ($row['In_stock']) ? "Yes" : "No";
     echo "<tr id = 'table_data'>";
     echo "<td>$title</td>";
     echo "<td>$isbn</td>";

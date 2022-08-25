@@ -27,30 +27,25 @@
 <body>
   <nav>
   <ul>
-  <li><a href = "http://localhost/test/admin/view_requests.php" target="_blank">View Requests</a></li>
-  <li><a href = "http://localhost/test/admin/take_back.php" target="_blank">Return Book</a></li>
-  <li><a href = "contact.asp">Contact</a></li>
-  <li><a href = "about.asp">About</a></li>
-  <li style = 'float : right;'><a href = "http://localhost/test/logout.php">Logout</a>
+  <li><a href = "http://localhost/Library Management System/admin/view_requests.php" target="_blank">View Requests</a></li>
+  <li><a href = "http://localhost/Library Management System/admin/take_back.php" target="_blank">Borrowed Books</a></li>
+  <!-- <li><a href = "contact.asp">Contact</a></li>
+  <li><a href = "about.asp">About</a></li> -->
+  <li style = 'float : right;'><a href = "http://localhost/Library Management System/logout.php">Logout</a>
   </ul>
 </nav>
   <?php
     session_start();
     if(!isset($_SESSION['id']))
     {
-      $_SESSION["msg"] = "Please login or register to continue";
-      header("location: http://localhost/test/admin/signin&signup.php");
+      header("location: http://localhost/Library Management System/admin/signin&signup.php");
     } elseif ($_SESSION['user_type'] != "admin")
     {
-      $_SESSION["msg"] = "You are not authorized to enter";
-      header("location: http://localhost/test/admin/signin&signup.php");
+      header("location: http://localhost/Library Management System/admin/signin&signup.php");
     }
-    if(isset($_SESSION['msg']))
-    {
-        echo $_SESSION["msg"];
-    }
+
     $name = $_SESSION['name'];
-    echo "Hi $name<br>";
+    echo "<h1 style = 'margin-left: 4%;'>Hi $name</h1><br>";
 
     // $user = "root";
     // $pass = "";
@@ -66,7 +61,7 @@
     //   echo "<br>";
     // }
    ?>
-   <a href = "http://localhost/test/admin/logout.php">Logout</a>
+   <a href = "http://localhost/Library Management System/admin/logout.php">Logout</a>
 
    <form action = "admin_action.php" method="POST">
      <h2>Add a Book</h2>
@@ -92,7 +87,7 @@
      <label>Genre</label>
      <input type = "text" name = "genre" required>
      <br><br>
-     <button name = "submit" value = "add_book" type = "submit">Submit</button>
+     <button name = "submit" value = "add_book" type = "submit" class = "button">Submit</button>
    </form>
 
    <form action = "admin_action.php" method="POST" id = "delete">
@@ -102,7 +97,7 @@
 
      <input type = "text" name = "isbn" required>
      <br><br>
-     <button name = "submit" value = "del_book" type = "submit">Submit</button>
+     <button name = "submit" value = "del_book" type = "submit" class = "button">Submit</button>
    </form>
 
    <form action = "admin_action.php" method="POST" id = "update">
@@ -114,7 +109,7 @@
      <label>New price</label>
      <input type = "number" name = "new_price" required>
      <br><br>
-     <button name = "submit" value = "alt_book_price" type = "submit">Submit</button>
+     <button name = "submit" value = "alt_book_price" type = "submit" class = "button">Submit</button>
    </form>
 </body>
 </html>

@@ -16,8 +16,7 @@ $num = mysqli_num_rows($result);
 
 if ($num == 1)
 {
-  $_SESSION['msg'] = "ID has already been registered";
-  header("location: http://localhost/test/signin&signup.php");
+  header("location: http://localhost/Library Management System/signin&signup.php");
 } else
 {
   $reg = "insert into student values('$id', '$name', '$dep', '$pass')";
@@ -26,6 +25,6 @@ if ($num == 1)
   $_SESSION['id'] = $id;
   $_SESSION['name'] = $name;
   $_SESSION['user_type'] = "user";
-  header("location: http://localhost/test/home.php");
+  header("location: http://localhost/Library Management System/home.php");
 }
 ?>

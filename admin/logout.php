@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 
-header("location: http://localhost/test/admin/signin&signup.php");
+header("location: http://localhost/Library Management System/admin/signin&signup.php");
 ?>

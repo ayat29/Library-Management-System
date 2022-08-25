@@ -5,11 +5,11 @@
 <body>
   <nav>
   <ul>
-  <li><a href = "http://localhost/test/view_past_orders.php">Past Orders</a></li>
-  <li><a href = "http://localhost/test/view_wishlist.php">Wishlist</a></li>
-  <li><a href = "contact.asp">Contact</a></li>
-  <li><a href = "about.asp">About</a></li>
-  <li style = 'float : right;'><a href = "http://localhost/test/logout.php">Logout</a>
+  <li><a href = "http://localhost/Library Management System/view_past_orders.php">Past Orders</a></li>
+  <li><a href = "http://localhost/Library Management System/view_wishlist.php">Wishlist</a></li>
+  <!-- <li><a href = "contact.asp">Contact</a></li>
+  <li><a href = "about.asp">About</a></li> -->
+  <li style = 'float : right;'><a href = "http://localhost/Library Management System/logout.php">Logout</a>
   </ul>
 
 <div class="header">
@@ -24,12 +24,12 @@
     session_start();
     if(!isset($_SESSION['id']))
     {
-      $_SESSION["msg"] = "Please login or register to continue";
-      header("location: http://localhost/test/signin&signup.php");
+
+      header("location: http://localhost/Library Management System/signin&signup.php");
     } elseif ($_SESSION['user_type'] != "user")
     {
-      $_SESSION["msg"] = "You are not authorized to enter";
-      header("location: http://localhost/test/signin&signup.php");
+
+      header("location: http://localhost/Library Management System/signin&signup.php");
     }
 
     $user = "root";
@@ -39,7 +39,7 @@
 
     $name = $_SESSION['name'];
 
-    echo "<h1>Hi $name<br>Explore our books!</h1><br>";
+    echo "<h1 style = 'margin-left: 3%;'>Hi $name<br>Explore our books!</h1><br>";
 
     $book_query = "select * from book limit 5";
     $book_result = mysqli_query($con, $book_query);
@@ -49,7 +49,6 @@
       <tr id = 'table_head'>
         <td>Book</td>
         <td>Authors</td>
-        <td>Country</td>
       </tr>";
     foreach ($rows as $row)
     {
@@ -65,12 +64,14 @@
         echo "<p>$author_name </p>";
       }
       echo "</td>
+      <td><form action = 'wishlist_add.php' method = 'post' target = '_blank'><input type='hidden' name='isbn' value=$isbn>
+            <input type='hidden' name='title' value=$title> <button class = 'button' type = 'submit'>Request Book</button></form></td>
       </tr>";
     }
     echo "</table>";
    ?>
 <section>
-   <form name="search" action="http://localhost/test/search.php" method="post">
+   <form name="search" action="http://localhost/Library Management System/search.php" method="post">
      <p class = 'option'>Select Genre</p>
      <input type="radio" id="nonfiction" name="genre" value="Nonfiction">
     <label for="nonfiction">Nonfiction</label>
@@ -102,13 +103,13 @@
 
    <br><br>
 
-     <button type = "submit" formtarget="_blank">Search</button>
+     <button type = "submit" formtarget="_blank" class = 'button'>Search</button>
 
    </form>
 
 
-   <form action = "delete_account.php" method="POST">
-     <button type = "submit">Delete Account</button>
+   <form action = "delete_account.php" method="POST" style = 'margin-left: 42%;'>
+     <button type = "submit" class = 'button'>Delete Account</button>
    </form>
 </section>
 </body>

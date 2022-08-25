@@ -1,5 +1,14 @@
 <?php
    session_start();
+   if(!isset($_SESSION['id']))
+   {
+
+     header("location: http://localhost/Library Management System/signin&signup.php");
+   } elseif ($_SESSION['user_type'] != "user")
+   {
+
+     header("location: http://localhost/Library Management System/signin&signup.php");
+   }
    $user = "root";
    $pass = "";
    $db = "library";
@@ -7,8 +16,8 @@
 
    if(!isset($_SESSION['id']))
    {
-     $_SESSION["msg"] = "Please login or register to continue";
-     header("location: http://localhost/test/signin&signup.php");
+
+     header("location: http://localhost/Library Management System/signin&signup.php");
    }
 
    $id = $_SESSION['id'];

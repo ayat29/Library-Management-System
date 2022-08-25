@@ -14,12 +14,12 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //print_r(array_keys($rows));
 if (mysqli_num_rows($result) == 0)
 {
-  $_SESSION['msg'] = "Please register to continue";
-  header("location: http://localhost/test/admin/signin&signup.php");
+
+  header("location: http://localhost/Library Management System/admin/signin&signup.php");
 } elseif ($rows["0"]["password"] != $pass)
 {
-  $_SESSION['msg'] = "Wrong password";
-  header("location: http://localhost/test/admin/signin&signup.php");
+
+  header("location: http://localhost/Library Management System/admin/signin&signup.php");
 } else
 {
   $_SESSION['id'] = $id;
@@ -28,7 +28,7 @@ if (mysqli_num_rows($result) == 0)
   //print_r(array_keys($rows));
   //print_r($rows["0"]);
   // printf($rows["0"]["Name"]);
-  header("location: http://localhost/test/admin/home.php");
+  header("location: http://localhost/Library Management System/admin/home.php");
 }
 // if ($num == 1)
 // {
@@ -37,9 +37,9 @@ if (mysqli_num_rows($result) == 0)
 //   $_SESSION['user_type'] = "user";
 //   // print_r(array_keys($rows));
 //   // printf($rows["0"]["Name"]);
-//   header("location: http://localhost/test/home.php");
+//   header("location: http://localhost/Library Management System/home.php");
 // } else
 // {
-//   header("location: http://localhost/test/signin&signup.php");
+//   header("location: http://localhost/Library Management System/signin&signup.php");
 // }
 ?>

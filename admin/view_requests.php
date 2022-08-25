@@ -8,12 +8,12 @@
   session_start();
   if(!isset($_SESSION['id']))
   {
-    $_SESSION["msg"] = "Please login or register to continue";
-    header("location: http://localhost/test/admin/signin&signup.php");
+
+    header("location: http://localhost/Library Management System/admin/signin&signup.php");
   } elseif ($_SESSION['user_type'] != "admin")
   {
-    $_SESSION["msg"] = "You are not authorized to enter";
-    header("location: http://localhost/test/admin/signin&signup.php");
+
+    header("location: http://localhost/Library Management System/admin/signin&signup.php");
   }
 
   $user = "root";

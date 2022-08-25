@@ -1,5 +1,18 @@
+<html>
+<body>
+  <link rel = "stylesheet" href = "../css/main.css">
+  <h1 style = 'text-align: center; padding-top: 20%;'>Successful!</h1>
+</body>
+</html>
 <?php
   session_start();
+  if(!isset($_SESSION['id']))
+  {
+    header("location: http://localhost/Library Management System/admin/signin&signup.php");
+  } elseif ($_SESSION['user_type'] != "admin")
+  {
+    header("location: http://localhost/Library Management System/admin/signin&signup.php");
+  }
   $user = "root";
   $pass = "";
   $db = "library";

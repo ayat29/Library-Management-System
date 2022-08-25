@@ -15,16 +15,14 @@ $num = mysqli_num_rows($result);
 
 if ($num == 1)
 {
-  $_SESSION['msg'] = "ID has already been registered";
-  header("location: http://localhost/test/admin/signin&signup.php");
+  header("location: http://localhost/Library Management System/admin/signin&signup.php");
 } else
 {
   $reg = "insert into admin values('$id', '$pass', '$name')";
   mysqli_query($con, $reg);
-  $_SESSION['msg'] = "Your registration was successful!";
   $_SESSION['id'] = $id;
   $_SESSION['name'] = $name;
   $_SESSION['user_type'] = "admin";
-  header("location: http://localhost/test/admin/home.php");
+  header("location: http://localhost/Library Management System/admin/home.php");
 }
 ?>

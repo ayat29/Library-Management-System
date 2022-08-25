@@ -5,6 +5,15 @@
 </head>
 <?php
   session_start();
+  if(!isset($_SESSION['id']))
+  {
+
+    header("location: http://localhost/Library Management System/signin&signup.php");
+  } elseif ($_SESSION['user_type'] != "user")
+  {
+
+    header("location: http://localhost/Library Management System/signin&signup.php");
+  }
   $id = $_SESSION['id'];
   echo "<h1>Your wishlist</h1>";
   $user = "root";

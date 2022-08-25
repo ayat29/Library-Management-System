@@ -1,5 +1,39 @@
 <html>
+<head>
+  <link rel = "stylesheet" href = "../css/main.css">
+  <style>
+    form {
+      display: inline-block;
+      font-size: 40px;
+      color: white;
+      border-radius: 25px;
+      background-color: #333;
+      padding: 30px;
+      opacity: 0.9;
+      margin-top: 2%;
+    }
+
+    #update {
+      float: right;
+      margin-right: 5px;
+    }
+
+    #delete {
+      float: right;
+      margin-right: 3%;
+    }
+  </style>
+</head>
 <body>
+  <nav>
+  <ul>
+  <li><a href = "http://localhost/test/admin/view_requests.php" target="_blank">View Requests</a></li>
+  <li><a href = "http://localhost/test/admin/take_back.php" target="_blank">Return Book</a></li>
+  <li><a href = "contact.asp">Contact</a></li>
+  <li><a href = "about.asp">About</a></li>
+  <li style = 'float : right;'><a href = "http://localhost/test/logout.php">Logout</a>
+  </ul>
+</nav>
   <?php
     session_start();
     if(!isset($_SESSION['id']))
@@ -16,7 +50,7 @@
         echo $_SESSION["msg"];
     }
     $name = $_SESSION['name'];
-    echo "Hi $name";
+    echo "Hi $name<br>";
 
     // $user = "root";
     // $pass = "";
@@ -33,5 +67,54 @@
     // }
    ?>
    <a href = "http://localhost/test/admin/logout.php">Logout</a>
+
+   <form action = "admin_action.php" method="POST">
+     <h2>Add a Book</h2>
+
+     <label>ISBN</label>
+     <input type = "text" name = "isbn" required>
+     <br><br>
+     <label>Price</label>
+     <input type = "number" name = "price" required>
+     <br><br>
+     <label>Publisher</label>
+     <input type = "text" name = "publisher" required>
+     <br><br>
+     <label>Language</label>
+     <input type = "text" name = "language" required>
+     <br><br>
+     <label>Title</label>
+     <input type = "text" name = "title" required>
+     <br><br>
+     <label>Publish Date</label>
+     <input type = "date" name = "publish_date" required>
+     <br><br>
+     <label>Genre</label>
+     <input type = "text" name = "genre" required>
+     <br><br>
+     <button name = "submit" value = "add_book" type = "submit">Submit</button>
+   </form>
+
+   <form action = "admin_action.php" method="POST" id = "delete">
+     <h2>Delete Book</h2>
+
+     <label>ISBN</label>
+
+     <input type = "text" name = "isbn" required>
+     <br><br>
+     <button name = "submit" value = "del_book" type = "submit">Submit</button>
+   </form>
+
+   <form action = "admin_action.php" method="POST" id = "update">
+     <h2>Update book price</h2>
+
+     <label>ISBN</label>
+     <input type = "text" name = "isbn" required>
+     <br><br>
+     <label>New price</label>
+     <input type = "number" name = "new_price" required>
+     <br><br>
+     <button name = "submit" value = "alt_book_price" type = "submit">Submit</button>
+   </form>
 </body>
 </html>

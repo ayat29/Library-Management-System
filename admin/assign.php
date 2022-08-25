@@ -6,7 +6,7 @@
   $con = new mysqli("localhost", $user, $pass, $db) or die("Unable to connect");
   $isbn = $_POST["isbn"];
   $stu_id = $_POST["id"];
-  $title = $_POST["title"];
+  $wishlist_id  =$_POST["wishlist_id"];
 
   $query = "select * from copy where ISBN = '$isbn' and Availability = 1";
   $result = mysqli_query($con, $query);
@@ -19,9 +19,11 @@
   } else
   {
     $copy_id = $rows['0']['Copy_ID'];
-    $query2 = "insert into borrows values('$isbn', $copy_id, $stu_id, 0, CURRENT_DATE())";
+    $query2 = "insert into borrows values('$isbn', $copy_id, $stu_id, 0, date_add(CURRENT_DATE(), interval 2 week), CURRENT_DATE())";
     mysqli_query($con, $query2);
     $query3 = "update copy set Availability = 0 where ISBN = '$isbn' and Copy_ID = $copy_id";
     mysqli_query($con, $query3);
+    $query4 = "delete from wishlist_book where Student_ID = $stu_id and Wishlist_ID = $wishlist_id";
+    mysqli_query($con, $query4);
   }
 ?>

@@ -1,3 +1,8 @@
+<html>
+<body>
+  <head>
+    <link rel = "stylesheet" href = "css/main.css">
+  </head>
 <?php
   session_start();
   $user = "root";
@@ -17,11 +22,11 @@
   {
     $_POST["title"] = NULL;
   }
-  if (!isset($_POST["author"]))
+  if (!isset($_POST["author"]) || $_POST["author"] == "None")
   {
     $_POST["author"] = NULL;
   }
-  if (!isset($_POST["language"]))
+  if (!isset($_POST["language"]) || $_POST["language"] == "None")
   {
     $_POST["language"] = NULL;
   }
@@ -58,16 +63,35 @@
   }
 
   //printf($query);
+
+  echo "<table>
+  <tr id = 'table_head'>
+    <td>Title</td>
+    <td>ISBN</td>
+    <td>Price</td>
+  </tr>";
+
   $present = array();
   $list = mysqli_fetch_all(mysqli_query($con, $query), MYSQLI_ASSOC);
   foreach ($list as $item)
   {
     if (!in_array($item["ISBN"], $present))
     {
-      $res_book = $item['Title'];
-      echo "<p>$res_book</p>";
+      $title = $item['Title'];
+      $price = $item['Price'];
+      $isbn = $item['ISBN'];
+      echo "<tr id = 'table_data'>";
+      echo "<td>$title</td>";
+      echo "<td>$isbn</td>";
+      echo "<td>$price</td>";
+      echo "<td><form action = 'wishlist_add.php' method = 'post' target = '_blank'><input type='hidden' name='isbn' value=$isbn>
+            <input type='hidden' name='title' value=$title> <button class = 'button' type = 'submit'>Request Book</button></form></td>";
+      echo "</tr>";
+      echo "<br>";
       array_push($present, $item["ISBN"]);
     }
   }
 
  ?>
+ </html>
+</body>

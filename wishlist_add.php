@@ -1,20 +1,21 @@
 <?php
   session_start();
   $isbn = $_POST['isbn'];
-  $title = $_POST['title'];
+
   $stu_id = $_SESSION['id'];
   $user = "root";
   $pass = "";
   $db = "library";
   $con = new mysqli("localhost", $user, $pass, $db) or die("Unable to connect");
-
+  $title = mysqli_real_escape_string($con, $_POST['title']);
   $query1 = "select * from book where isbn = '$isbn'";
   $result1 = mysqli_query($con, $query1);
   $num = mysqli_num_rows($result1);
   printf($num);
-  $query2 = "select * from wishlist_book where Student_ID = '$stu_id'";
+  $query2 = "select max(Wishlist_ID) from wishlist_book group by Student_ID and Student_ID = $stu_id";
   $result2 = mysqli_query($con, $query2);
-  $wish_id = mysqli_num_rows($result2);
+  $result2 = mysqli_fetch_all($result2, MYSQLI_ASSOC);
+  $wish_id = (!empty($result2)) ? $result2['0']['max(Wishlist_ID)'] + 1 : 0;
   if ($num == 0)
   {
     $query3 = "insert into wishlist_book values($wish_id, '$stu_id', '$title', '$isbn', 0, 0)";
@@ -28,7 +29,7 @@
     {
       $stock = 1;
     }
-    $query3 = "insert into wishlist_book values($wish_id, '$stu_id', '$title', '$isbn', 1, $stock)";
+    $query3 = "insert into wishlist_book values($wish_id, '$stu_id', '$title', '$isbn', 1, $stock, CURRENT_DATE())";
     mysqli_query($con, $query3);
   }
  ?>

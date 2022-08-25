@@ -11,7 +11,7 @@
   $query1 = "select Title, Price from book where ISBN = '$isbn'";
   $result1 = mysqli_query($con, $query1);
   $rows1 = mysqli_fetch_all($result1, MYSQLI_ASSOC);
-  $title = $rows1['0']['Title']; $price = $rows1['0']['Price'];
+  $title = mysqli_real_escape_string($con, $rows1['0']['Title']); $price = $rows1['0']['Price'];
 
   $query2 = "select Date_borrowed from borrows where ISBN = '$isbn' and Copy_ID = $cpid and Student_ID = '$stu_id'";
   $result2 = mysqli_query($con, $query2);
@@ -24,9 +24,14 @@
   $delay = $rows3['0']['delay'];
   $late_fee = max($delay/7, 0) * 10;
 
-  $query4 = "select * from past_order where Student_ID = '$stu_id'";
+
+  $query4 = "select max(Past_order_ID) from past_order group by Student_ID and Student_ID = $stu_id";
   $result4 = mysqli_query($con, $query4);
-  $past_order_ID = mysqli_num_rows($result4);
+  $result4 = mysqli_fetch_all($result4, MYSQLI_ASSOC);
+  $past_order_ID = (!empty($result4)) ? $result4['0']['max(Past_order_ID)'] + 1 : 0;
+  // $query4 = "select * from past_order where Student_ID = '$stu_id'";
+  // $result4 = mysqli_query($con, $query4);
+  // $past_order_ID = mysqli_num_rows($result4);
 
   $curr_date = "select current_date()";
   $curr_date = mysqli_query($con, $curr_date);

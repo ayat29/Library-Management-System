@@ -17,9 +17,6 @@
     <label>ISBN</label>
     <input type = "text" name = "isbn" required>
 
-    <label>Title</label>
-    <input type = "text" name = "title" required>
-
     <label>Student ID:</label>
     <input type = "text" name = "id" required>
 

@@ -33,7 +33,7 @@
   <ul>
   <li><a href = "http://localhost/Library Management System/admin/view_requests.php" target="_blank">View Requests</a></li>
   <li><a href = "http://localhost/Library Management System/admin/take_back.php" target="_blank">Borrowed Books</a></li>
-  <li><a href = "http://localhost/Library Management System/admin/booklist.php" target="_blank">See Books</a></li>
+  <li><a href = "http://localhost/Library Management System/admin/search.php" target="_blank">Search Books</a></li>
   <!-- <li><a href = "contact.asp">Contact</a></li>
   <li><a href = "about.asp">About</a></li> -->
   <li style = 'float : right;'><a href = "http://localhost/Library Management System/admin/logout.php">Logout</a>

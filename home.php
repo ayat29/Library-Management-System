@@ -73,34 +73,25 @@
     echo "</table>";
    ?>
 <section>
+  <br>
+  <p class = 'option'>Choose your options, leave empty if no preference</p>
    <form name="search" action="http://localhost/Library Management System/search.php" method="post">
-     <p class = 'option'>Select Genre</p>
-     <input type="radio" id="nonfiction" name="genre" value="Nonfiction">
-    <label for="nonfiction">Nonfiction</label>
-    <input type="radio" id="comedy" name="genre" value="Comedy">
-    <label for="comedy">Comedy</label>
-    <input type="radio" id="fantasy" name="genre" value="Fantasy">
-    <label for="fantasy">Fantasy</label>
-    <input type="radio" id="none_auth" name="genre" value="None">
-    <label for="none_auth">None</label>
 
-    <p class = 'option'>Select Language</p>
-    <input type="radio" id="english" name="language" value="English">
-   <label for="english">English</label>
-   <input type="radio" id="bangla" name="language" value="Bangla">
-   <label for="bangla">Bangla</label>
-   <input type="radio" id="none_lang" name="language" value="None">
-   <label for="none_lang">None</label>
+     <label for="genre">Genre:</label>
+     <input type="text" id="genre" name="genre">
+     <br><br>
+     <label for="english">Language:</label>
+    <input type="text" id="language" name="language">
 
-   <p class = 'option'>Choose author and book title, leave empty if no preference</p>
+
+    <br><br>
    <label for = "author" >Author name:</label>
-   <br>
-   <input type = "text" name = "author" id = "author">
 
+   <input type = "text" name = "author" id = "author">
    <br><br>
 
    <label for = "title">Book Title:</label>
-   <br>
+
    <input type = "text" name = "title" id = "title">
 
    <br><br>

@@ -7,6 +7,8 @@
   <ul>
   <li><a href = "http://localhost/Library Management System/view_past_orders.php" target = "_blank">Past Orders</a></li>
   <li><a href = "http://localhost/Library Management System/view_wishlist.php" target = "_blank">Wishlist</a></li>
+  <li><a href = "http://localhost/Library Management System/wishlist.php" target = "_blank">Request a Book</a></li>
+  <li><a href = "http://localhost/Library Management System/curr_bor.php" target = "_blank">View Borrowed Books</a></li>
   <!-- <li><a href = "contact.asp">Contact</a></li>
   <li><a href = "about.asp">About</a></li> -->
   <li style = 'float : right;'><a href = "http://localhost/Library Management System/logout.php">Logout</a>

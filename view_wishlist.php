@@ -40,8 +40,8 @@
 
     $query1 = "select * from copy where ISBN = '$isbn' and Availability = 1";
     $query2 = "select * from book where ISBN = '$isbn'";
-    $availability = (mysqli_num_rows(mysqli_query($con, $query1))) ? "Available" : "Not available";
-    $in_stock = (mysqli_num_rows(mysqli_query($con, $query2))) ? "Yes" : "No";
+    $availability = (mysqli_num_rows(mysqli_query($con, $query2))) ? "Available" : "Not available";
+    $in_stock = (mysqli_num_rows(mysqli_query($con, $query1))) ? "Yes" : "No";
     echo "<tr id = 'table_data'>";
     echo "<td>$title</td>";
     echo "<td>$isbn</td>";

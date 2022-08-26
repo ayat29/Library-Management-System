@@ -27,9 +27,25 @@
     $title = $_POST["title"];
     $publish_date = $_POST["publish_date"];
     $genre = $_POST["genre"];
+    $authors = explode(",", $_POST["authors"]);
+    $num = $_POST["num"];
     $query = "insert into book values
   ('$isbn', $price, '$publisher', '$language', '$title', '$publish_date', '$genre')";
     mysqli_query($con, $query);
+
+    foreach($authors as $author)
+    {
+      $author = trim($author);
+      $query0 = "insert into author values('$isbn', '$author')";
+      mysqli_query($con, $query0);
+    }
+
+    for ($i = 1; $i <= $num; $i++)
+    {
+      $query1 = "insert into copy values('$isbn', '$i', 1)";
+      mysqli_query($con, $query1);
+    }
+
 
   } elseif ($action == "del_book")
   {
